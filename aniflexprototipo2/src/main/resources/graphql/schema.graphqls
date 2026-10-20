@@ -1,0 +1,61 @@
+# Las fechas (LocalDateTime) viajan como String ISO-8601: "2024-05-01T20:30:00".
+
+type Serie {
+    id: ID!
+    titulo: String!
+    temporadas: Int!
+    calificacion: Float!
+    fechaEstreno: String!
+    enEmision: Boolean!
+}
+
+type Episodio {
+    id: ID!
+    serieId: ID!
+    noEpisodio: Int!
+    titulo: String!
+    calificacion: Float!
+    fechaEmision: String!
+    esEspecial: Boolean!
+}
+
+input SerieInput {
+    id: ID!
+    titulo: String!
+    temporadas: Int!
+    calificacion: Float!
+    fechaEstreno: String!
+    enEmision: Boolean!
+}
+
+input EpisodioInput {
+    id: ID!
+    serieId: ID!
+    noEpisodio: Int!
+    titulo: String!
+    calificacion: Float!
+    fechaEmision: String!
+    esEspecial: Boolean!
+}
+
+type Query {
+    "Consulta individual por uno o dos parámetros (si llegan ambos, deben coincidir ambos)."
+    buscarSerie(id: ID, titulo: String): Serie
+    "Todas las series; filtros opcionales aplicados en el servidor."
+    listarSeries(titulo: String, calificacionMinima: Float): [Serie!]!
+
+    "Consulta individual por serie + número de episodio."
+    buscarEpisodio(serieId: ID!, noEpisodio: Int!): Episodio
+    "Todos los episodios; filtros opcionales (serie, título contiene) aplicados en el servidor."
+    listarEpisodios(serieId: ID, titulo: String): [Episodio!]!
+}
+
+type Mutation {
+    adicionarSerie(input: SerieInput!): Serie!
+    actualizarSerie(input: SerieInput!): Serie!
+    eliminarSerie(id: ID!): Boolean!
+
+    adicionarEpisodio(input: EpisodioInput!): Episodio!
+    actualizarEpisodio(input: EpisodioInput!): Episodio!
+    eliminarEpisodio(id: ID!): Boolean!
+}
