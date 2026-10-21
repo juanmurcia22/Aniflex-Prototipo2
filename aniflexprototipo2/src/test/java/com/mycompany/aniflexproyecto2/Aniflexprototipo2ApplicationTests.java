@@ -1,4 +1,4 @@
-package com.mycompany.aniflexprototipo2;
+package com.mycompany.aniflexproyecto2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,5 +9,4 @@ class Aniflexprototipo2ApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }

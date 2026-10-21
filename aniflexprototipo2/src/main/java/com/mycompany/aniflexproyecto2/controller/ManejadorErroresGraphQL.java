@@ -1,4 +1,4 @@
-package com.mycompany.aniflexproyecto2.controlador;
+package com.mycompany.aniflexproyecto2.controller;
 
 import graphql.GraphQLError;
 import graphql.GraphqlErrorBuilder;
@@ -8,9 +8,8 @@ import org.springframework.graphql.execution.ErrorType;
 import org.springframework.stereotype.Component;
 
 /**
- * Sin esto, toda excepción llega al cliente como un genérico "INTERNAL_ERROR".
- * Aquí las IllegalArgumentException (ID duplicado, calificación fuera de rango, serie inexistente...)
- * se convierten en errores GraphQL con el mensaje real, que el cliente React muestra al usuario.
+ * Convierte las IllegalArgumentException (ID duplicado, calificación fuera de rango, serie inexistente...)
+ * en errores GraphQL con el mensaje real; el cliente lo lee en errors[0].message y se lo muestra al usuario.
  */
 @Component
 public class ManejadorErroresGraphQL extends DataFetcherExceptionResolverAdapter {
@@ -23,6 +22,6 @@ public class ManejadorErroresGraphQL extends DataFetcherExceptionResolverAdapter
                     .message(ex.getMessage())
                     .build();
         }
-        return null;   // otras excepciones: comportamiento por defecto de Spring
+        return null;
     }
 }
