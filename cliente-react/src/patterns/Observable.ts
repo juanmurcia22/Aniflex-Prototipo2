@@ -1,10 +1,6 @@
 export type Listener = () => void;
 
-/**
- * Patrón Observer (sujeto). Los observadores (p. ej. la ventana Listar) se suscriben
- * y reciben aviso cada vez que los datos cambian. subscribe() devuelve la función
- * para cancelar la suscripción.
- */
+// Sujeto Observer
 export class Observable {
   private readonly observadores = new Set<Listener>();
 

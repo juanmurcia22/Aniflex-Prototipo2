@@ -5,7 +5,6 @@ import { EntityDetail } from '../components/EntityDetail';
 import { type Msg, Mensaje } from '../components/Mensaje';
 import { SearchPanel } from '../components/SearchPanel';
 
-/** Caso de uso: ELIMINAR. Se busca, se muestra TODA la información y solo entonces se confirma. */
 export function EliminarWindow<T extends { id: string }>({ config }: { config: EntityConfig<T> }) {
   const [encontrado, setEncontrado] = useState<T | null>(null);
   const [msg, setMsg] = useState<Msg | null>(null);

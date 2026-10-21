@@ -2,7 +2,7 @@ import type { Episodio } from '../models/Episodio';
 import { EpisodioService } from '../services/EpisodioService';
 import { CrudController } from './CrudController';
 
-/** Patrón Singleton. */
+// Singleton
 export class EpisodioController extends CrudController<Episodio> {
   private static instancia: EpisodioController;
 

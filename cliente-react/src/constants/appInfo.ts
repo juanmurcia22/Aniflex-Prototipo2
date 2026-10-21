@@ -1,4 +1,3 @@
-// Datos del menú Ayuda//
 export const APP_NOMBRE = 'Aniflex';
 export const APP_VERSION = '1.0.0';
 export const INTEGRANTES: string[] = [

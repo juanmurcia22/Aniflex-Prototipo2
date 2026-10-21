@@ -1,7 +1,6 @@
 import type { FieldDef } from '../../entities/EntityConfig';
 import { formatear } from './formato';
 
-/** Muestra TODOS los atributos de un objeto (exigido antes de actualizar o eliminar). */
 export function EntityDetail({ campos, entidad }: { campos: FieldDef[]; entidad: object }) {
   const e = entidad as Record<string, unknown>;
   return (

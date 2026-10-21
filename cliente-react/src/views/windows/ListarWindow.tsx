@@ -6,11 +6,6 @@ import { CampoInput } from '../components/CampoInput';
 import { DataGrid } from '../components/DataGrid';
 import { type Msg, Mensaje } from '../components/Mensaje';
 
-/**
- * Caso de uso: LISTAR (grilla + filtros aplicados en el SERVIDOR).
- * Es el OBSERVADOR: se suscribe al controlador y se recarga sola cuando otra ventana
- * adiciona, actualiza o elimina un registro.
- */
 export function ListarWindow<T extends { id: string }>({ config }: { config: EntityConfig<T> }) {
   const [valores, setValores] = useState<Raw>({});
   const [aplicado, setAplicado] = useState<Params>({});
@@ -28,7 +23,7 @@ export function ListarWindow<T extends { id: string }>({ config }: { config: Ent
 
   useEffect(() => {
     void cargar();
-    return config.controller.subscribe(() => { void cargar(); });   // Observer
+    return config.controller.subscribe(() => { void cargar(); });
   }, [config, cargar]);
 
   return (

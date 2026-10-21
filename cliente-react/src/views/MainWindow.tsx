@@ -33,7 +33,7 @@ interface Abierta {
   contenido: ReactElement;
 }
 
-/** VIEW principal: menú + escritorio donde se abren las ventanas (una por caso de uso; pueden convivir varias). */
+// Ventana principal
 export function MainWindow() {
   const [abiertas, setAbiertas] = useState<Abierta[]>([]);
   const zActual = useRef(1);
@@ -47,7 +47,7 @@ export function MainWindow() {
     const z = ++zActual.current;
     setAbiertas((prev) =>
       prev.some((v) => v.clave === clave)
-        ? prev.map((v) => (v.clave === clave ? { ...v, z } : v))     // ya abierta: solo al frente
+        ? prev.map((v) => (v.clave === clave ? { ...v, z } : v))
         : [...prev, { clave, titulo, contenido, z, x: 30 + prev.length * 28, y: 16 + prev.length * 28 }],
     );
   }
@@ -74,7 +74,14 @@ export function MainWindow() {
       <header className="titulo">{APP_NOMBRE}</header>
       <MenuBar menus={menus} />
       <main className="escritorio">
-        {abiertas.length === 0 && <p className="bienvenida">Use el menú superior para abrir una función.</p>}
+        {abiertas.length === 0 && (
+          <div className="bienvenida">
+            <div className="logo-card">
+              <img src="/aniflex.png" alt="Aniflex" className="logo-bienvenida" />
+            </div>
+            <p>Use el menú superior para abrir una función.</p>
+          </div>
+        )}
         {abiertas.map((v) => (
           <WindowFrame key={v.clave} titulo={v.titulo} inicial={{ x: v.x, y: v.y }} z={v.z}
                        onClose={() => cerrar(v.clave)} onFocus={() => enfocar(v.clave)}>

@@ -1,4 +1,3 @@
-// MODEL (maestro). Atributos: string, int, double, LocalDateTime (como ISO) y boolean.
 export type Serie = {
   id: string;
   titulo: string;
@@ -8,7 +7,7 @@ export type Serie = {
   enEmision: boolean;
 };
 
-/** Patrón Builder: arma una Serie paso a paso y verifica que no falte ningún atributo. */
+// Builder de Serie
 export class SerieBuilder {
   private datos: Partial<Serie> = {};
 

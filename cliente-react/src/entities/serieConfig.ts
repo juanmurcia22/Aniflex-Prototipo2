@@ -13,12 +13,10 @@ export const serieConfig: EntityConfig<Serie> = {
     { key: 'fechaEstreno', label: 'Fecha de estreno', tipo: 'datetime' },
     { key: 'enEmision', label: 'En emisión', tipo: 'boolean' },
   ],
-  // Consulta individual: uno o dos parámetros.
   camposBusqueda: [
     { key: 'id', label: 'ID', tipo: 'text' },
     { key: 'titulo', label: 'Título (exacto)', tipo: 'text' },
   ],
-  // Listar: filtros que el servidor aplica.
   camposFiltro: [
     { key: 'titulo', label: 'Título contiene', tipo: 'text' },
     { key: 'calificacionMinima', label: 'Calificación mínima', tipo: 'float' },

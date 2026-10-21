@@ -8,7 +8,6 @@ interface Props {
   disabled?: boolean;
 }
 
-/** Lista desplegable de series (el "maestro"). Se suscribe como observador: si se adiciona una serie, se refresca sola. */
 export function SerieSelect({ valor, onChange, disabled }: Props) {
   const [series, setSeries] = useState<Serie[]>([]);
 

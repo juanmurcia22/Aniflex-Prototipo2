@@ -5,7 +5,6 @@ import { EntityForm } from '../components/EntityForm';
 import { type Msg, Mensaje } from '../components/Mensaje';
 import { SearchPanel } from '../components/SearchPanel';
 
-/** Caso de uso: ACTUALIZAR. Primero se busca el objeto; luego se muestran TODOS sus atributos para editarlos. */
 export function ActualizarWindow<T extends { id: string }>({ config }: { config: EntityConfig<T> }) {
   const [encontrado, setEncontrado] = useState<T | null>(null);
   const [valores, setValores] = useState<Raw>({});

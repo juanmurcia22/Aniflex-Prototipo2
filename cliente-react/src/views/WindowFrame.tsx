@@ -9,7 +9,7 @@ interface Props {
   children: ReactNode;
 }
 
-/** Una "ventana" (equivalente a un JFrame): barra de título arrastrable, botón cerrar, un solo caso de uso dentro. */
+// Ventana arrastrable
 export function WindowFrame({ titulo, inicial, z, onClose, onFocus, children }: Props) {
   const [pos, setPos] = useState(inicial);
 

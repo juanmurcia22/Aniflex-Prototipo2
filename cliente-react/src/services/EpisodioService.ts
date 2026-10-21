@@ -5,7 +5,6 @@ import type { ICrudService, Params } from './ICrudService';
 
 const CAMPOS = 'id serieId noEpisodio titulo calificacion fechaEmision esEspecial';
 
-/** Único lugar que conoce los nombres de queries/mutations de Episodio en el servidor. */
 export class EpisodioService implements ICrudService<Episodio> {
   constructor(private readonly gql: GraphQLClient = GraphQLClient.getInstance()) {}
 

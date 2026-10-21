@@ -14,7 +14,6 @@ export const episodioConfig: EntityConfig<Episodio> = {
     { key: 'fechaEmision', label: 'Fecha de emisión', tipo: 'datetime' },
     { key: 'esEspecial', label: 'Es especial', tipo: 'boolean' },
   ],
-  // Consulta individual con dos parámetros: serie + número de episodio.
   camposBusqueda: [
     { key: 'serieId', label: 'Serie', tipo: 'serieRef' },
     { key: 'noEpisodio', label: 'Nº de episodio', tipo: 'int' },

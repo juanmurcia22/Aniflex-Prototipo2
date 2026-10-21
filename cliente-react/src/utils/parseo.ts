@@ -1,5 +1,4 @@
-// Conversión y validación de los valores crudos (texto) que vienen de los formularios.
-// Cada función lanza Error con un mensaje listo para mostrar al usuario.
+// Validaciones de formulario
 
 export function texto(v: string, campo: string): string {
   const t = v.trim();
@@ -23,7 +22,7 @@ export function decimal(v: string, campo: string, min = 0, max = Number.MAX_VALU
   return n;
 }
 
-/** <input type="datetime-local"> entrega "2024-05-01T20:30"; el servidor espera ISO con segundos. */
+// Formato ISO con segundos
 export function fechaHora(v: string, campo: string): string {
   if (!v) throw new Error(`El campo "${campo}" es obligatorio.`);
   return v.length === 16 ? `${v}:00` : v;

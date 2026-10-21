@@ -4,7 +4,6 @@ import { mensajeDe } from '../../utils/parseo';
 import { EntityForm } from '../components/EntityForm';
 import { type Msg, Mensaje } from '../components/Mensaje';
 
-/** Caso de uso: ADICIONAR (una sola funcionalidad). */
 export function AdicionarWindow<T extends { id: string }>({ config }: { config: EntityConfig<T> }) {
   const [valores, setValores] = useState<Raw>(() => valoresIniciales(config.campos));
   const [msg, setMsg] = useState<Msg | null>(null);
@@ -12,8 +11,8 @@ export function AdicionarWindow<T extends { id: string }>({ config }: { config: 
   async function guardar(e: FormEvent) {
     e.preventDefault();
     try {
-      const nuevo = config.desdeFormulario(valores);        // Builder + validaciones
-      await config.controller.adicionar(nuevo);             // Controller -> Service -> GraphQL
+      const nuevo = config.desdeFormulario(valores);
+      await config.controller.adicionar(nuevo);
       setMsg({ tipo: 'ok', texto: `Se adicionó el registro de ${config.nombre} con ID ${nuevo.id}.` });
       setValores(valoresIniciales(config.campos));
     } catch (err) {

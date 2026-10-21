@@ -1,4 +1,3 @@
-// MODEL (detalle). Relación: Serie 1..1 --> 0..* Episodio, mediante serieId.
 export type Episodio = {
   id: string;
   serieId: string;
@@ -9,7 +8,7 @@ export type Episodio = {
   esEspecial: boolean;
 };
 
-/** Patrón Builder para Episodio. */
+// Builder de Episodio
 export class EpisodioBuilder {
   private datos: Partial<Episodio> = {};
 

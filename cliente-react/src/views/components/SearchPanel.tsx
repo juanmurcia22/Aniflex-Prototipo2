@@ -9,7 +9,6 @@ interface Props<T extends { id: string }> {
   onResultado: (encontrado: T | null) => void;
 }
 
-/** Búsqueda individual reutilizada por Buscar, Actualizar y Eliminar ("previa búsqueda del objeto"). */
 export function SearchPanel<T extends { id: string }>({ config, onResultado }: Props<T>) {
   const [params, setParams] = useState<Raw>({});
   const [msg, setMsg] = useState<Msg | null>(null);

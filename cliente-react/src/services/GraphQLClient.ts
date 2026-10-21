@@ -21,7 +21,7 @@ export class GraphQLClient {
     }
 
     const cuerpo = await respuesta.json().catch(() => null);
-    // GraphQL suele responder HTTP 200 aun con errores: hay que mirar el campo "errors".
+    // Errores GraphQL
     if (cuerpo?.errors?.length) throw new Error(cuerpo.errors[0].message);
     if (!respuesta.ok || !cuerpo) throw new Error(`El servidor respondió con error HTTP ${respuesta.status}.`);
     return cuerpo.data as T;

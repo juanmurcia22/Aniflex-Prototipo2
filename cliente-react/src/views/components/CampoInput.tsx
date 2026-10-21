@@ -8,7 +8,6 @@ interface Props {
   soloLectura?: boolean;
 }
 
-/** Dibuja el control adecuado según el tipo del campo. */
 export function CampoInput({ campo, valor, onChange, soloLectura }: Props) {
   if (campo.tipo === 'boolean') {
     return (
