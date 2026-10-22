@@ -227,9 +227,10 @@
             label7.Location = new Point(49, 114);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(94, 17);
+            label7.Size = new Size(49, 17);
             label7.TabIndex = 27;
-            label7.Text = "Id a Cargar:";
+            label7.Text = "Titulo";
+            label7.Click += label7_Click;
             // 
             // FormActualizarSerie
             // 

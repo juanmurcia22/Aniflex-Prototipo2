@@ -106,5 +106,10 @@ namespace Aniflex.Client
         {
 
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
