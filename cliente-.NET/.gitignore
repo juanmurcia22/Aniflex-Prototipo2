@@ -1,0 +1,28 @@
+## Visual Studio y carpetas temporales
+.vs/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+
+## Resultados de compilación
+[Bb]in/
+[Oo]bj/
+
+## Archivos de usuario e IDE
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+## Paquetes NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+## Archivos de log
+*.log
