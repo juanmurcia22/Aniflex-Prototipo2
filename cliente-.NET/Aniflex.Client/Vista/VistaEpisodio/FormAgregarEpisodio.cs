@@ -51,7 +51,6 @@ namespace Aniflex.Client.Vista.VistaEpisodio
 
         private void LimpiarCampos()
         {
-            txtId.Clear();
             txtNumEpisodio.Clear();
             txtTitulo.Clear();
             txtCalificacion.Clear();
@@ -63,19 +62,11 @@ namespace Aniflex.Client.Vista.VistaEpisodio
         {
             try
             {
-                string id = txtId.Text.Trim();
-                if (string.IsNullOrEmpty(id))
-                {
-                    MessageBox.Show("Debes ingresar un ID.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (cmbSerie.SelectedValue == null)
+                if (cmbSerie.SelectedValue is not string serieId)
                 {
                     MessageBox.Show("Debes seleccionar una serie.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                string serieId = cmbSerie.SelectedValue.ToString();
 
                 if (!int.TryParse(txtNumEpisodio.Text, out int noEpisodio))
                 {
@@ -107,7 +98,6 @@ namespace Aniflex.Client.Vista.VistaEpisodio
 
                 Episodio nuevoEpisodio = new Episodio
                 {
-                    Id = id,
                     SerieId = serieId,
                     NoEpisodio = noEpisodio,
                     Titulo = titulo,

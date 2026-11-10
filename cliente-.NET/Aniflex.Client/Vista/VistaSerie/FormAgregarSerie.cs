@@ -28,7 +28,6 @@ namespace Aniflex.Client
             txtTitulo.Clear();
             txtTemporadas.Clear();
             txtCalificacion.Clear();
-            txtId.Clear();
             chkEnEmision.Checked = false;
         }
 
@@ -36,12 +35,6 @@ namespace Aniflex.Client
         {
             try
             {
-                string id = txtId.Text.Trim();
-                if (string.IsNullOrEmpty(id))
-                {
-                    MessageBox.Show("Debes ingresar un ID.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
                 // 1. Lectura y casteo de datos desde los controles de la UI
                 string titulo = txtTitulo.Text.Trim();
 
@@ -70,7 +63,6 @@ namespace Aniflex.Client
 
                 Serie nuevaSerie = new Serie
                 {
-                    Id = id,
                     Titulo = titulo,
                     Temporadas = temporadas,
                     Calificacion = calificacion,
@@ -91,11 +83,6 @@ namespace Aniflex.Client
             {
                 MessageBox.Show($"Error al guardar: {ex.Message}", "Error de Servidor", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void txtId_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void label6_Click(object sender, EventArgs e)

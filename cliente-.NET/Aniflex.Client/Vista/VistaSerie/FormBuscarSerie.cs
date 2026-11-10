@@ -50,7 +50,7 @@ namespace Aniflex.Client
                 }
                 else
                 {
-                    MessageBox.Show("No se encontró ninguna serie con ese ID.");
+                    MessageBox.Show("No se encontró ninguna serie con esos datos.");
                 }
             }
             catch (Exception ex)

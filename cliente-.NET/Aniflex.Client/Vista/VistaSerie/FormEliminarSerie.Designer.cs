@@ -175,7 +175,7 @@
             txtIdBuscar.Name = "txtIdBuscar";
             txtIdBuscar.Size = new Size(103, 17);
             txtIdBuscar.TabIndex = 23;
-            txtIdBuscar.Text = "Id a Eliminar:";
+            txtIdBuscar.Text = "ID (opcional):";
             txtIdBuscar.Click += txtIdBuscar_Click;
             // 
             // dateTimePickerEstreno

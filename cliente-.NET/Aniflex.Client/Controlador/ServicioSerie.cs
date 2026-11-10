@@ -52,7 +52,7 @@ namespace Aniflex.Client.Servicios
                 mutation($input: SerieInput!) {{
                     adicionarSerie(input: $input) {{ {Campos} }}
                 }}",
-                Variables = new { input = AInput(s) }
+                Variables = new { input = AInput(s, id: null) }
             };
             var r = await GraphQLConexion.Cliente.SendMutationAsync<AdicionarResponse>(request);
             GraphQLConexion.VerificarErrores(r);
@@ -67,7 +67,7 @@ namespace Aniflex.Client.Servicios
                 mutation($input: SerieInput!) {{
                     actualizarSerie(input: $input) {{ {Campos} }}
                 }}",
-                Variables = new { input = AInput(s) }
+                Variables = new { input = AInput(s, s.Id) }
             };
             var r = await GraphQLConexion.Cliente.SendMutationAsync<ActualizarResponse>(request);
             GraphQLConexion.VerificarErrores(r);
@@ -86,9 +86,9 @@ namespace Aniflex.Client.Servicios
             return r.Data?.EliminarSerie ?? false;
         }
 
-        private static object AInput(Serie s) => new
+        private static object AInput(Serie s, string? id) => new
         {
-            id = s.Id,
+            id,
             titulo = s.Titulo,
             temporadas = s.Temporadas,
             calificacion = s.Calificacion,

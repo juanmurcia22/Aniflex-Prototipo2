@@ -158,7 +158,7 @@
             txtIdBuscar.Name = "txtIdBuscar";
             txtIdBuscar.Size = new Size(94, 17);
             txtIdBuscar.TabIndex = 11;
-            txtIdBuscar.Text = "Id a Cargar:";
+            txtIdBuscar.Text = "ID (opcional):";
             // 
             // btnActualizar
             // 

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label2 = new Label();
-            txtId = new TextBox();
             label3 = new Label();
             txtTitulo = new TextBox();
             label4 = new Label();
@@ -53,27 +51,6 @@
             label1.Size = new Size(119, 18);
             label1.TabIndex = 0;
             label1.Text = "AGREGAR SERIE";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(52, 55);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(28, 17);
-            label2.TabIndex = 1;
-            label2.Text = "ID:";
-            // 
-            // txtId
-            // 
-            txtId.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtId.Location = new Point(198, 51);
-            txtId.Margin = new Padding(2);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(181, 23);
-            txtId.TabIndex = 2;
-            txtId.TextChanged += txtId_TextChanged;
             // 
             // label3
             // 
@@ -194,8 +171,6 @@
             Controls.Add(label4);
             Controls.Add(txtTitulo);
             Controls.Add(label3);
-            Controls.Add(txtId);
-            Controls.Add(label2);
             Controls.Add(label1);
             Margin = new Padding(2);
             Name = "FormAgregarSerie";
@@ -208,8 +183,6 @@
         #endregion
 
         private Label label1;
-        private Label label2;
-        private TextBox txtId;
         private Label label3;
         private TextBox txtTitulo;
         private Label label4;

@@ -51,7 +51,7 @@ namespace Aniflex.Client
                 }
                 else
                 {
-                    MessageBox.Show("No se encontró ninguna serie con ese ID.");
+                    MessageBox.Show("No se encontró ninguna serie con esos datos.");
                 }
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace Aniflex.Client
 
                 if (string.IsNullOrEmpty(id))
                 {
-                    MessageBox.Show("Ingresa el ID de la serie a eliminar.");
+                    MessageBox.Show("Busca primero la serie que quieres eliminar.");
                     return;
                 }
 
