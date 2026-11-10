@@ -11,7 +11,7 @@ export abstract class CrudController<T> implements ICrudController<T> {
     return this.observable.subscribe(listener);
   }
 
-  async adicionar(entidad: T): Promise<T> {
+  async adicionar(entidad: Omit<T, 'id'>): Promise<T> {
     const r = await this.servicio.adicionar(entidad);
     this.observable.notify();
     return r;

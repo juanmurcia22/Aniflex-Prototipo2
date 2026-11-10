@@ -1,4 +1,4 @@
-import type { Episodio } from '../models/Episodio';
+import type { Episodio, EpisodioNuevo } from '../models/Episodio';
 import { sinVacios } from '../utils/parseo';
 import { GraphQLClient } from './GraphQLClient';
 import type { ICrudService, Params } from './ICrudService';
@@ -8,7 +8,7 @@ const CAMPOS = 'id serieId noEpisodio titulo calificacion fechaEmision esEspecia
 export class EpisodioService implements ICrudService<Episodio> {
   constructor(private readonly gql: GraphQLClient = GraphQLClient.getInstance()) {}
 
-  async adicionar(e: Episodio): Promise<Episodio> {
+  async adicionar(e: EpisodioNuevo): Promise<Episodio> {
     const d = await this.gql.request<{ adicionarEpisodio: Episodio }>(
       `mutation($input: EpisodioInput!) { adicionarEpisodio(input: $input) { ${CAMPOS} } }`, { input: e });
     return d.adicionarEpisodio;

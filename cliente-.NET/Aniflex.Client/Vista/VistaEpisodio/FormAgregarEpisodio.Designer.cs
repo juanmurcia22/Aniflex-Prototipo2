@@ -40,8 +40,6 @@
             label5 = new Label();
             txtTitulo = new TextBox();
             label3 = new Label();
-            txtId = new TextBox();
-            label2 = new Label();
             label1 = new Label();
             SuspendLayout();
             // 
@@ -168,26 +166,6 @@
             label3.TabIndex = 33;
             label3.Text = "Título:";
             // 
-            // txtId
-            // 
-            txtId.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtId.Location = new Point(170, 70);
-            txtId.Margin = new Padding(2);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(181, 23);
-            txtId.TabIndex = 32;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(24, 74);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(28, 17);
-            label2.TabIndex = 31;
-            label2.Text = "ID:";
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -216,8 +194,6 @@
             Controls.Add(label5);
             Controls.Add(txtTitulo);
             Controls.Add(label3);
-            Controls.Add(txtId);
-            Controls.Add(label2);
             Controls.Add(label1);
             Name = "FormAgregarEpisodio";
             Text = "FormAgregarEpisodio";
@@ -239,8 +215,6 @@
         private Label label5;
         private TextBox txtTitulo;
         private Label label3;
-        private TextBox txtId;
-        private Label label2;
         private Label label1;
     }
 }

@@ -18,7 +18,7 @@ type Episodio {
 }
 
 input SerieInput {
-    id: ID!
+    id: ID
     titulo: String!
     temporadas: Int!
     calificacion: Float!
@@ -27,7 +27,7 @@ input SerieInput {
 }
 
 input EpisodioInput {
-    id: ID!
+    id: ID
     serieId: ID!
     noEpisodio: Int!
     titulo: String!

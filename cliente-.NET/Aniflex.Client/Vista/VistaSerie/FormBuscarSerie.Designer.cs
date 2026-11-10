@@ -56,7 +56,7 @@
             txtIdBuscar.Name = "txtIdBuscar";
             txtIdBuscar.Size = new Size(95, 17);
             txtIdBuscar.TabIndex = 0;
-            txtIdBuscar.Text = "Id a Buscar:";
+            txtIdBuscar.Text = "ID (opcional):";
             // 
             // label1
             // 

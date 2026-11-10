@@ -8,6 +8,9 @@ export type Episodio = {
   esEspecial: boolean;
 };
 
+// Episodio que todavía no existe en el servidor: aún no tiene id (lo genera MongoDB al insertar)
+export type EpisodioNuevo = Omit<Episodio, 'id'>;
+
 // Builder de Episodio
 export class EpisodioBuilder {
   private datos: Partial<Episodio> = {};
@@ -20,9 +23,16 @@ export class EpisodioBuilder {
   fechaEmision(v: string) { this.datos.fechaEmision = v; return this; }
   esEspecial(v: boolean) { this.datos.esEspecial = v; return this; }
 
-  build(): Episodio {
+  /** Para ADICIONAR: sin id (lo genera el servidor). */
+  buildNuevo(): EpisodioNuevo {
+    const { id: _omitido, ...resto } = this.build(false);
+    return resto;
+  }
+
+  /** Para ACTUALIZAR: el id es obligatorio. */
+  build(exigirId = true): Episodio {
     const d = this.datos;
-    if (d.id === undefined || d.serieId === undefined || d.noEpisodio === undefined ||
+    if ((exigirId && d.id === undefined) || d.serieId === undefined || d.noEpisodio === undefined ||
         d.titulo === undefined || d.calificacion === undefined ||
         d.fechaEmision === undefined || d.esEspecial === undefined) {
       throw new Error('Faltan atributos para construir el Episodio.');

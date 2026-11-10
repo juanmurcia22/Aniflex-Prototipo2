@@ -22,7 +22,7 @@ export function SerieSelect({ valor, onChange, disabled }: Props) {
     <select value={valor} disabled={disabled} onChange={(e) => onChange(e.target.value)}>
       <option value="">— seleccione —</option>
       {series.map((s) => (
-        <option key={s.id} value={s.id}>{s.id} · {s.titulo}</option>
+        <option key={s.id} value={s.id}>{s.titulo}</option>
       ))}
     </select>
   );
