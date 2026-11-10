@@ -9,6 +9,7 @@ export interface FieldDef {
   label: string;
   tipo: TipoCampo;
   soloLecturaAlEditar?: boolean;
+  ocultoAlAdicionar?: boolean;   // p. ej. el id: lo genera MongoDB, no se pide al adicionar
 }
 
 export type Raw = Record<string, string | boolean>;
@@ -20,7 +21,8 @@ export interface EntityConfig<T extends { id: string }> {
   camposBusqueda: FieldDef[];
   camposFiltro: FieldDef[];
   controller: ICrudController<T>;
-  desdeFormulario(raw: Raw): T;
+  desdeFormularioNuevo(raw: Raw): Omit<T, 'id'>;   // para adicionar (sin id)
+  desdeFormulario(raw: Raw): T;                    // para actualizar (con id)
 }
 
 export type AnyConfig = EntityConfig<any>;

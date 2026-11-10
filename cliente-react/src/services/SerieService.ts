@@ -1,4 +1,4 @@
-import type { Serie } from '../models/Serie';
+import type { Serie, SerieNueva } from '../models/Serie';
 import { sinVacios } from '../utils/parseo';
 import { GraphQLClient } from './GraphQLClient';
 import type { ICrudService, Params } from './ICrudService';
@@ -8,7 +8,7 @@ const CAMPOS = 'id titulo temporadas calificacion fechaEstreno enEmision';
 export class SerieService implements ICrudService<Serie> {
   constructor(private readonly gql: GraphQLClient = GraphQLClient.getInstance()) {}
 
-  async adicionar(serie: Serie): Promise<Serie> {
+  async adicionar(serie: SerieNueva): Promise<Serie> {
     const d = await this.gql.request<{ adicionarSerie: Serie }>(
       `mutation($input: SerieInput!) { adicionarSerie(input: $input) { ${CAMPOS} } }`, { input: serie });
     return d.adicionarSerie;

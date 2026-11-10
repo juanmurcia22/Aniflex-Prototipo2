@@ -11,7 +11,7 @@ interface Props {
 export function EntityForm({ campos, valores, onChange, modoEdicion = false }: Props) {
   return (
     <>
-      {campos.map((c) => (
+      {campos.filter((c) => modoEdicion || !c.ocultoAlAdicionar).map((c) => (
         <CampoInput key={c.key} campo={c} valor={valores[c.key] ?? ''}
                     onChange={(v) => onChange(c.key, v)}
                     soloLectura={modoEdicion && c.soloLecturaAlEditar} />

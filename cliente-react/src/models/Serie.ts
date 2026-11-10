@@ -7,6 +7,9 @@ export type Serie = {
   enEmision: boolean;
 };
 
+// Serie que todavía no existe en el servidor: aún no tiene id (lo genera MongoDB al insertar)
+export type SerieNueva = Omit<Serie, 'id'>;
+
 // Builder de Serie
 export class SerieBuilder {
   private datos: Partial<Serie> = {};
@@ -18,9 +21,16 @@ export class SerieBuilder {
   fechaEstreno(v: string) { this.datos.fechaEstreno = v; return this; }
   enEmision(v: boolean) { this.datos.enEmision = v; return this; }
 
-  build(): Serie {
+  /** Para ADICIONAR: sin id (lo genera el servidor). */
+  buildNueva(): SerieNueva {
+    const { id: _omitido, ...resto } = this.build(false);
+    return resto;
+  }
+
+  /** Para ACTUALIZAR: el id es obligatorio. */
+  build(exigirId = true): Serie {
     const d = this.datos;
-    if (d.id === undefined || d.titulo === undefined || d.temporadas === undefined ||
+    if ((exigirId && d.id === undefined) || d.titulo === undefined || d.temporadas === undefined ||
         d.calificacion === undefined || d.fechaEstreno === undefined || d.enEmision === undefined) {
       throw new Error('Faltan atributos para construir la Serie.');
     }

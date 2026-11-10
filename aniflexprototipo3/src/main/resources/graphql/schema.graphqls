@@ -1,0 +1,87 @@
+# Las fechas (LocalDateTime) viajan como String ISO-8601: "2024-05-01T20:30:00".
+
+type Serie {
+    id: ID!
+    titulo: String!
+    temporadas: Int!
+    calificacion: Float!
+    fechaEstreno: String!
+    enEmision: Boolean!
+}
+
+type Episodio {
+    id: ID!
+    serieId: ID!
+    noEpisodio: Int!
+    titulo: String!
+    calificacion: Float!
+    fechaEmision: String!
+    esEspecial: Boolean!
+    "Atributo de la serie (colección A) para el listado del detalle."
+    serieTitulo: String
+    "Atributo de la serie (colección A) para el listado del detalle."
+    serieCalificacion: Float
+}
+
+"Dos atributos del detalle (usado en la consulta maestro-detalle)."
+type EpisodioResumen {
+    noEpisodio: Int!
+    titulo: String!
+}
+
+"Consulta personalizada: todos los datos del maestro + dos atributos de cada episodio."
+type SerieConEpisodios {
+    id: ID!
+    titulo: String!
+    temporadas: Int!
+    calificacion: Float!
+    fechaEstreno: String!
+    enEmision: Boolean!
+    episodios: [EpisodioResumen!]!
+}
+
+"El id es opcional: al adicionar se ignora (MongoDB genera el ObjectId); al actualizar es obligatorio."
+input SerieInput {
+    id: ID
+    titulo: String!
+    temporadas: Int!
+    calificacion: Float!
+    fechaEstreno: String!
+    enEmision: Boolean!
+}
+
+"El id es opcional: al adicionar se ignora (MongoDB genera el ObjectId); al actualizar es obligatorio."
+input EpisodioInput {
+    id: ID
+    serieId: ID!
+    noEpisodio: Int!
+    titulo: String!
+    calificacion: Float!
+    fechaEmision: String!
+    esEspecial: Boolean!
+}
+
+type Query {
+    "Consulta individual por uno o dos parámetros (si llegan ambos, deben coincidir ambos)."
+    buscarSerie(id: ID, titulo: String): Serie
+    "Todas las series; filtros opcionales aplicados en el servidor."
+    listarSeries(titulo: String, calificacionMinima: Float): [Serie!]!
+
+    "Consulta personalizada maestro-detalle: cada serie con el nº y título de sus episodios (filtro opcional por título)."
+    seriesConEpisodios(titulo: String): [SerieConEpisodios!]!
+
+    "Consulta individual por serie + número de episodio."
+    buscarEpisodio(serieId: ID!, noEpisodio: Int!): Episodio
+    "Todos los episodios; filtros opcionales (serie, título contiene) aplicados en el servidor."
+    listarEpisodios(serieId: ID, titulo: String): [Episodio!]!
+}
+
+type Mutation {
+    adicionarSerie(input: SerieInput!): Serie!
+    actualizarSerie(input: SerieInput!): Serie!
+    eliminarSerie(id: ID!): Boolean!
+
+    adicionarEpisodio(input: EpisodioInput!): Episodio!
+    actualizarEpisodio(input: EpisodioInput!): Episodio!
+    eliminarEpisodio(id: ID!): Boolean!
+}

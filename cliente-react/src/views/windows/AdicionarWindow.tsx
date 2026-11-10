@@ -11,9 +11,8 @@ export function AdicionarWindow<T extends { id: string }>({ config }: { config: 
   async function guardar(e: FormEvent) {
     e.preventDefault();
     try {
-      const nuevo = config.desdeFormulario(valores);
-      await config.controller.adicionar(nuevo);
-      setMsg({ tipo: 'ok', texto: `Se adicionó el registro de ${config.nombre} con ID ${nuevo.id}.` });
+      const creado = await config.controller.adicionar(config.desdeFormularioNuevo(valores));
+      setMsg({ tipo: 'ok', texto: `Se adicionó el registro de ${config.nombre} con ID ${creado.id}.` });
       setValores(valoresIniciales(config.campos));
     } catch (err) {
       setMsg({ tipo: 'error', texto: mensajeDe(err) });
